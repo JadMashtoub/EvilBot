@@ -50,4 +50,4 @@ const checkAchievements = async (playerUsername, channel) => {
 
   setTimeout(() => checkAchievements(playerUsername, channel), 30000); // Checks every 30 seconds
 };
-client.login('MTEyMjAzNTE1ODc1Mzc1MTExMQ.GNyCyY.fmXZyeBGQ1Qmww5laxtozmNcfS70BUJrQdArTg');
+client.login('MTEyMjAzNTE1ODc1Mzc1MTExMQ.GVQFuq.fvz7cl20eTYOuIN1mO8ncNwrYqZOcd_N1xpYVw');
