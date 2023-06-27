@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch-npm');
-
+const config = require('./config.json');
 const client = new Discord.Client();
 const channelId = '1122051145578324072'; // Right-click and copy the channel ID
 let trackedPlayers = []; // Array to store tracked players
@@ -50,4 +50,4 @@ const checkAchievements = async (playerUsername, channel) => {
 
   setTimeout(() => checkAchievements(playerUsername, channel), 30000); // Checks every 30 seconds
 };
-client.login('MTEyMjAzNTE1ODc1Mzc1MTExMQ.GVQFuq.fvz7cl20eTYOuIN1mO8ncNwrYqZOcd_N1xpYVw');
+client.login(config.json);
