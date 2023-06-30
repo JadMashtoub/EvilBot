@@ -4,10 +4,9 @@ const config = require('./config.json');
 const client = new Discord.Client();
 const channelId = '1122051145578324072'; // Right-click and copy the channel ID
 let trackedPlayers = []; // Array to store tracked players
-let lastEntryId = null; // Variable to store the last entry ID
 
 client.on('ready', () => {
-  console.log('Bot is ready!');
+  console.log(`Logged in as ${client.user.tag}`);
 });
 
 client.on('message', async (message) => {
@@ -37,11 +36,11 @@ const checkAchievements = async (playerUsername, channel) => {
 
     if (data.activities.length > 0) {
       const latestEntry = data.activities[0];
-      if (latestEntry.details !== lastEntryId) {
-        lastEntryId = latestEntry.details;
-
-        channel.send(`New achievement for ${playerUsername}!`);
-        channel.send(latestEntry.text);
+      if (!trackedPlayers.includes(latestEntry.details)) {
+        trackedPlayers.push(latestEntry.details);
+        console.log(latestEntry)
+        const achievementMessage = `${playerUsername}:${latestEntry.text}`;
+        channel.send(achievementMessage);
       }
     }
   } catch (error) {
@@ -50,4 +49,4 @@ const checkAchievements = async (playerUsername, channel) => {
 
   setTimeout(() => checkAchievements(playerUsername, channel), 30000); // Checks every 30 seconds
 };
-client.login(config.json);
+client.login(config.discordToken);
